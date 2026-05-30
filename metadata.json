@@ -1,0 +1,6 @@
+{
+  "name": "Irfan - One Piece Pirate Workout",
+  "description": "One Piece styled daily home fitness, quest log, boss battles, body tracker, and gamified leveling app with Bengali support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════
+   LIQUID GLASS DESIGN SYSTEM
+   One Piece × Liquid Glass UI Custom Components
+══════════════════════════════════════════════ */
+
+:root {
+  --red: #D62828;
+  --gold: #FFB703;
+  --navy: #023E8A;
+  --navy-mid: #0353A4;
+  --navy-dark: #03045E;
+  --orange: #FB8500;
+  --cream: #F4E8C1;
+  --parchment: #E8D5A3;
+  --wood: #3D2B1F;
+  --ocean: #0A1628;
+  --ocean-mid: #112240;
+  --ocean-light: #172A45;
+  --white: #FDF8EC;
+  --muted: rgba(188, 204, 224, 0.9);
+  --dim: rgba(125, 143, 172, 0.85);
+
+  /* Liquid Glass tokens */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-gold: rgba(255, 183, 3, 0.3);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --glass-shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 183, 3, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(20px);
+  --glass-blur-heavy: blur(32px);
+  --radius-card: 22px;
+}
+
+/* Base font classes */
+.pirate {
+  font-family: 'Pirata One', cursive, system-ui;
+  letter-spacing: 2px;
+}
+
+.cinzel {
+  font-family: 'Cinzel', serif, Georgia, serif;
+}
+
+body {
+  font-family: 'Crimson Pro', serif;
+  background: #060e1a;
+  color: #FDF8EC;
+  overflow-x: hidden;
+}
+
+/* Background gradient wave style */
+.bg-ocean-glow {
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 10%, rgba(3, 83, 164, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 85%, rgba(214, 40, 40, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(10, 22, 40, 0.85) 0%, transparent 100%),
+    radial-gradient(ellipse 90% 40% at 20% 70%, rgba(255, 183, 3, 0.06) 0%, transparent 50%);
+}
+
+/* PWA Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 183, 3, 0.3);
+  border-radius: 4px;
+}
+
+/* Glass card systems */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-gold {
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border-gold);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 183, 3, 0.5), transparent);
+  pointer-events: none;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Interactive quest rows */
+.quest-row {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.quest-row::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px; width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--orange));
+  border-radius: 0 3px 3px 0;
+}
+
+.quest-row.done {
+  opacity: 0.45;
+  background: rgba(255, 255, 255, 0.01);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+.quest-row.done::after {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Special Button elements */
+.btn-primary {
+  background: linear-gradient(135deg, rgba(214, 40, 40, 0.85) 0%, rgba(176, 24, 24, 0.9) 100%);
+  color: white;
+  border: 1px solid rgba(255, 100, 100, 0.25);
+  box-shadow: 0 4px 18px rgba(214, 40, 40, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.9) 0%, rgba(251, 133, 0, 0.85) 100%);
+  color: #0A1628;
+  border: 1px solid rgba(255, 210, 80, 0.35);
+  box-shadow: 0 4px 18px rgba(255, 183, 3, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(188, 204, 224, 0.9);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #FDF8EC;
+}
+
+/* Stepper adjusted keys */
+.adj-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #FDF8EC;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adj-btn:active {
+  transform: scale(0.88);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Keyframe animations */
+@keyframes bgglow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.float-animation {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 2.1s infinite;
+}
